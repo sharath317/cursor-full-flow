@@ -1,0 +1,37 @@
+{
+  "name": "cursor-full-flow",
+  "version": "1.0.0",
+  "description": "End-to-End Development Workflow for Cursor IDE - Jira to PR automation",
+  "bin": {
+    "cursor-full-flow": "./bin/cli.js",
+    "full-flow": "./bin/cli.js"
+  },
+  "main": "./bin/cli.js",
+  "keywords": [
+    "cursor",
+    "cursor-rules",
+    "cursor-commands",
+    "jira",
+    "github",
+    "workflow",
+    "automation",
+    "pr-automation",
+    "dev-productivity",
+    "ai-coding"
+  ],
+  "author": "Sharath Chandra",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharath317/cursor-full-flow"
+  },
+  "homepage": "https://github.com/sharath317/cursor-full-flow#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "commands/",
+    "templates/"
+  ]
+}
