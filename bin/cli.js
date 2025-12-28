@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const CURSOR_DIR = '.cursor';
 const COMMANDS_DIR = 'commands';
 
@@ -446,15 +446,27 @@ ${colors.dim}https://github.com/sharath317/cursor-full-flow${colors.reset}
 const args = process.argv.slice(2);
 const flags = {};
 let command = null;
+const skipNextArg = new Set();
 
+// First pass: identify args that are values for flags
 args.forEach((arg, idx) => {
-    if (arg === '-y' || arg === '--yes') {
+    if (arg === '--bundle' && args[idx + 1]) {
+        skipNextArg.add(idx + 1);
+    }
+});
+
+// Second pass: parse flags and command
+args.forEach((arg, idx) => {
+    if (skipNextArg.has(idx)) {
+        // This is a value for a flag, not a command
+        return;
+    } else if (arg === '-y' || arg === '--yes') {
         flags.yes = true;
     } else if (arg === '--skip-mcp') {
         flags.skipMcp = true;
     } else if (arg === '--bundle' && args[idx + 1]) {
         flags.bundle = args[idx + 1];
-    } else if (!arg.startsWith('-') && !command) {
+    } else if (!arg.startsWith('-') && command === null) {
         command = arg;
     }
 });
@@ -462,7 +474,7 @@ args.forEach((arg, idx) => {
 // Execute command
 switch (command) {
     case 'init':
-    case undefined:
+    case null:
         init(flags);
         break;
     case 'status':
