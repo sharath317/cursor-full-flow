@@ -1,6 +1,6 @@
 {
   "name": "cursor-full-flow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "End-to-End Development Workflow for Cursor IDE - Jira to PR automation",
   "bin": {
     "cursor-full-flow": "./bin/cli.js",
