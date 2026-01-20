@@ -159,3 +159,26 @@ MIT © Sharath Chandra
 ---
 
 **Made for developers who want their IDE to handle the boring stuff.**
+
+## 🤝 Buddy Integration
+
+Full-Flow now includes the enhanced `/buddy` command with **Smart Detection**:
+
+```bash
+# Get daily context snapshot
+/buddy
+
+# Smart detection identifies:
+- Completed tickets still showing in Git context
+- Merged branches needing cleanup
+- Stale branches (30+ days)
+- Mismatches between Jira status and Git state
+```
+
+The `/buddy` command provides cleanup suggestions automatically:
+- Switch to master and delete merged branches
+- Archive stale branches
+- Close old PRs
+
+See `commands/buddy.md` for full documentation.
+
